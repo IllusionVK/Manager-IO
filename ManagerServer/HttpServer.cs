@@ -107,7 +107,9 @@ namespace ManagerServer
                     GraceHours: double.Parse(parts[0], System.Globalization.CultureInfo.InvariantCulture),
                     HalfLifeHours: double.Parse(parts[1], System.Globalization.CultureInfo.InvariantCulture),
                     MaxAgeHours: double.Parse(parts[2], System.Globalization.CultureInfo.InvariantCulture),
-                    InitialTimeout: TimeSpan.FromHours(24));
+                    InitialTimeout: TimeSpan.FromHours(parts.Length > 3
+                        ? double.Parse(parts[3], System.Globalization.CultureInfo.InvariantCulture)
+                        : 1));
                 builder.Services.AddSingleton(idleOptions);
                 builder.Services.AddHostedService<Services.IdleShutdownService>();
             }
