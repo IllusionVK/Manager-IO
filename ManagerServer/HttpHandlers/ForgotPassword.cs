@@ -145,16 +145,6 @@ namespace ManagerServer.HttpHandlers
 
             client.CheckCertificateRevocation = false; // this doesn't seem to work on IPv6-only network if set True
 
-            var socks5Proxy = Environment.GetEnvironmentVariable("SOCKS5_PROXY");
-            if (!string.IsNullOrWhiteSpace(socks5Proxy))
-            {
-                var proxyUri = new Uri(socks5Proxy);
-                if (!string.IsNullOrWhiteSpace(proxyUri.UserInfo))
-                    client.ProxyClient = new Socks5Client(proxyUri.Host, proxyUri.Port, new NetworkCredential(proxyUri.UserInfo.Split(':').First(), proxyUri.UserInfo.Split(':').Last()));
-                else
-                    client.ProxyClient = new Socks5Client(proxyUri.Host, proxyUri.Port);
-            }
-
             if (smtp.UseSsl)
                 await client.ConnectAsync(smtp.Host, smtp.Port, MailKit.Security.SecureSocketOptions.SslOnConnect);
             else
