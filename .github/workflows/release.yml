@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
       with:
         fetch-depth: 0
 
@@ -43,9 +43,9 @@ jobs:
         shell: bash
         working-directory: ManagerServer
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
 
@@ -80,15 +80,15 @@ jobs:
         shell: bash
         working-directory: ManagerDesktop
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v7
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
         cache-dependency-path: ManagerDesktop/package-lock.json
 
@@ -118,15 +118,15 @@ jobs:
         shell: bash
         working-directory: ManagerDesktop
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v7
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
         cache-dependency-path: ManagerDesktop/package-lock.json
 
@@ -150,15 +150,15 @@ jobs:
         shell: bash
         working-directory: ManagerDesktop
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v7
 
-    - uses: actions/setup-dotnet@v4
+    - uses: actions/setup-dotnet@v6
       with:
         dotnet-version: 10.0.x
 
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v7
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
         cache-dependency-path: ManagerDesktop/package-lock.json
 
