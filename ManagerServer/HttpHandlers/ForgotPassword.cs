@@ -52,8 +52,6 @@ namespace ManagerServer.HttpHandlers
                 using (Div(@class: "text-red-600 font-bold")) Write(Strings.NoEmailAddress);
             }
 
-            InputHidden(name: nameof(FormData.Origin), id: "origin");
-
             using (Div(@class: "flex gap-4 items-center"))
             {
                 using (PrimaryButton())
@@ -63,14 +61,11 @@ namespace ManagerServer.HttpHandlers
                 }
                 using (DefaultLink(new Login().ToUrl())) Write(Strings.Cancel);
             }
-
-            using (Script()) Write("document.getElementById('origin').value = window.location.origin;");
         }
 
         public sealed class FormData
         {
             public string Username;
-            public string Origin;
         }
 
         protected override async Task InnerPost()
@@ -86,7 +81,6 @@ namespace ManagerServer.HttpHandlers
 
             var form = await Request.ReadFormAsync();
             var username = form[nameof(FormData.Username)].ToString().Trim().ToLowerInvariant();
-            var origin = form[nameof(FormData.Origin)].ToString().Trim();
 
             if (string.IsNullOrWhiteSpace(username))
             {
@@ -115,7 +109,7 @@ namespace ManagerServer.HttpHandlers
             userRecord.PasswordResetTokenExpiry = DateTime.UtcNow.AddHours(1);
             await ApplicationData.Users.Save(userRecord);
 
-            var baseUrl = !string.IsNullOrWhiteSpace(origin) ? origin : $"{Request.Scheme}://{Request.Host}";
+            var baseUrl = $"{Request.Scheme}://{Request.Host}";
             var resetUrl = $"{baseUrl}{new ResetPassword { Username = username, Token = token }.ToUrl()}";
 
             await SendResetEmail(smtp, userRecord.EmailAddress, userRecord.Username, baseUrl, resetUrl);
