@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ManagerServer.Globalization;
+using ManagerServer.Helpers;
 
 namespace ManagerServer.HttpHandlers.Businesses.Business.Summary
 {
@@ -17,5 +18,25 @@ namespace ManagerServer.HttpHandlers.Businesses.Business.Summary
     [Columns]
     internal sealed class SummaryTransactions : BaseGeneralLedgerTransactionsInheritable
     {
+        protected override void OnAfterHeader(Context context)
+        {
+            if (From.HasValue)
+            {
+                using (Div(@class: "card-header bg-yellow-50"))
+                {
+                    using (Div(@class: "flex gap-2 items-center"))
+                    {
+                        I(@class: "fas fa-fw fa-filter text-neutral-400");
+                        using (Span(@class: "font-semibold")) Write(Strings.Filter + ":");
+                        Write(" " + string.Format(
+                            Strings.For_the_period_from_XXX_to_XXX,
+                            From.Value.ToLocalShortDisplayString(),
+                            To.ToLocalShortDisplayString()));
+                    }
+                }
+            }
+
+            base.OnAfterHeader(context);
+        }
     }
 }
