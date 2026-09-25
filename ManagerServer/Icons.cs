@@ -50,6 +50,7 @@ namespace ManagerServer
             icons.Add(nameof(HttpHandlers.Businesses.Business.SpecialAccounts), "fa-cubes");
             icons.Add(nameof(HttpHandlers.Businesses.Business.JournalEntries), "fa-balance-scale");
             icons.Add(nameof(HttpHandlers.Businesses.Business.Folders), "fa-folder-open");
+            icons.Add(nameof(HttpHandlers.Businesses.Business.Graphs), "fa-chart-line");
             icons.Add(nameof(HttpHandlers.Businesses.Business.Reports), "fa-print");
             icons.Add(nameof(HttpHandlers.Businesses.Business.Settings), "fa-cog");
 

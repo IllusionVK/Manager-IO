@@ -780,6 +780,7 @@ namespace ManagerServer.Globalization
         public static string FreightIn => Get(nameof(FreightIn)) ?? "Freight-in";
         public static string From => Get(nameof(From)) ?? "From";
         public static string FromDate => Get(nameof(FromDate)) ?? "From";
+        public static string Graphs => Get(nameof(Graphs)) ?? "Graphs";
         public static string FullAccess => Get(nameof(FullAccess)) ?? "Full access";
         public static string FundsContributed => Get(nameof(FundsContributed)) ?? "Funds contributed";
         public static string General_ledger => Get(nameof(General_ledger)) ?? "General Ledger";

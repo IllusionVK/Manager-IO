@@ -171,6 +171,10 @@ namespace ManagerServer.Model
         [Guide("The `Folders` tab allows you to categorize documents and transactions into specific groups, making them easy to access and manage.")]
         [ProtoMember(31), TabSwitch(false)] public bool Folders { get; set; }
 
+        [TabScreenshot("fa-chart-line", nameof(Strings.Graphs))]
+        [Guide("The `Graphs` tab provides visual dashboards for reviewing the financial performance of your business.")]
+        [ProtoMember(51), TabSwitch(false)] public bool Graphs { get; set; }
+
         [ProtoMember(49)] public bool Obsolete_InvestmentRevaluations { get; set; }
         [ProtoMember(50)] public bool Obsolete_CurrencyRevaluations { get; set; }
         [ProtoMember(23)] public bool Obsolete_BillableExpenses { get; set; }

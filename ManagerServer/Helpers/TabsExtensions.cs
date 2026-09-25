@@ -76,6 +76,7 @@ namespace ManagerServer.Helpers
             collection.SpecialAccounts = new Item() { DisplayName = Strings.SpecialAccounts, Count = GetCount < ManagerServer.Model.SpecialAccount>(database), Name = "SpecialAccounts", HttpHandler = new HttpHandlers.Businesses.Business.SpecialAccounts.SpecialAccounts() { Business = fileId }, Visible = o.SpecialAccounts };
             collection.JournalEntries = new Item() { DisplayName = Strings.JournalEntries, Count = GetCount < ManagerServer.Model.JournalEntry>(database), Name = "JournalEntries", HttpHandler = new HttpHandlers.Businesses.Business.JournalEntries.JournalEntries() { Business = fileId }, Visible = true, PendingCount = GetPendingCount<ManagerServer.Model.RecurringJournalEntry>(database) };
             collection.Folders = new Item() { DisplayName = Strings.Folders, Count = GetCount<ManagerServer.Model.Folder>(database), Name = "Folders", HttpHandler = new HttpHandlers.Businesses.Business.Folders.Folders() { Business = fileId }, Visible = o.Folders };            
+            collection.Graphs = new Item() { DisplayName = Strings.Graphs, Name = "Graphs", HttpHandler = new HttpHandlers.Businesses.Business.Graphs.Graphs() { Business = fileId }, Visible = o.Graphs };
             collection.Reports = new Item() { DisplayName = Strings.Reports, Name = "Reports", HttpHandler = new HttpHandlers.Businesses.Business.Reports.Reports() { Business = fileId }, Visible = true };
             collection.Settings = new Item() { DisplayName = Strings.Settings, Name = "Settings", HttpHandler = new HttpHandlers.Businesses.Business.Settings.Settings() { Business = fileId }, Visible = true };
 
@@ -118,6 +119,7 @@ namespace ManagerServer.Helpers
             public Item BillableTime;
             public Item FixedAssets;
             public Item JournalEntries;
+            public Item Graphs;
             public Item Reports;
             public Item Settings;
             public Item SalesOrders;
@@ -182,6 +184,7 @@ namespace ManagerServer.Helpers
                     SpecialAccounts,
                     JournalEntries,
                     Folders,
+                    Graphs,
                     Reports,
                     Settings
                 };
